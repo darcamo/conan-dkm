@@ -6,7 +6,7 @@ class DkmConan(ConanFile):
     version = "master"
     license = "MIT"
     author = "Darlan Cavalcante Moreira (darcamo@gmail.com)"
-    url = "https://github.com/darcamo/conan-recipes"
+    url = "https://github.com/darcamo/conan-dkm"
     description = ("This is a k-means clustering algorithm written in C++, "
                    "intended to be used as a header-only library. Requires "
                    "C++11. See https://github.com/genbattle/dkm")
