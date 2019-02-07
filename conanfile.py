@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class DkmConan(ConanFile):
     name = "dkm"
-    version = "master"
+    version = "2018-11-23-ea62d93"
     license = "MIT"
     author = "Darlan Cavalcante Moreira (darcamo@gmail.com)"
     url = "https://github.com/darcamo/conan-dkm"
@@ -14,14 +14,10 @@ class DkmConan(ConanFile):
     homepage = "https://github.com/genbattle/dkm"
 
     def source(self):
-        self.run("git clone https://github.com/genbattle/dkm")
-        # This small hack might be useful to guarantee proper /MT /MD linkage
-        # in MSVC if the packaged project doesn't have variables to set it
-        # properly
-        # tools.replace_in_file("hello/CMakeLists.txt", "PROJECT(MyHello)",
-#                               '''PROJECT(MyHello)
-# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-# conan_basic_setup()''')
+        git = tools.Git(folder="dkm")
+        commit_sha1 = self.version.split("-")[-1]
+        git.clone(self.homepage)
+        git.checkout(commit_sha1)
 
     def package(self):
         self.copy("include/*.hpp", src="dkm")
