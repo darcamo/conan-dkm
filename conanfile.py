@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake, tools
+from conans import CMake, ConanFile, tools
 
 
 class DkmConan(ConanFile):
@@ -21,3 +21,6 @@ class DkmConan(ConanFile):
 
     def package(self):
         self.copy("include/*.hpp", src="dkm")
+
+    def package_id(self):
+        self.info.header_only()
